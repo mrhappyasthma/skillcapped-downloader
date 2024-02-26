@@ -21,10 +21,10 @@
 
 ## TODOs / Feature Requests
 
-- Does not work for commentary videos :(
-
 - Scrape all skill capped videos from site
 
 - Extract the class name from the HTML
+
+- Create a reasonably name from the HTML for commentaries
 
 - Add ability to download in different qualities (4k [default], 1080p, 720p)

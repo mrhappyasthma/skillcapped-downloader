@@ -13,17 +13,16 @@
 
 ## Running the script
 
-1. Grab any top-level skill capped course URL (e.g. `https://www.skill-capped.com/lol/browse/course/34w9xhmhdp/zbphpwz5xt` for `Mastering in Minutes: Wave Control` for LoL).
+1. Construct a comma-separate text file, with the format `<course_name>,<url>` where the URL is any top-level skill capped course URL (e.g. `Mastering in Minutes: Wave Control,https://www.skill-capped.com/lol/browse/course/34w9xhmhdp/zbphpwz5xt` for LoL). Each line should contain one of these pairs, separated by newlines.
 
 2. Run the script (`python3 skillcapped.py`).
 
-3. When prompted, paste the URL in to the tool.
-
-4. Wait for the files to download!
+3. Wait for the files to download!
 
 ## TODOs / Feature Requests
 
-- Read URLs/class names from a csv file
-- Or (better yet) scrape them from the main page of a given skill capped game
+- Scrape all skill capped videos from site
+
+- Extract the class name from the HTML
 
 - Add ability to download in different qualities (4k [default], 1080p, 720p)

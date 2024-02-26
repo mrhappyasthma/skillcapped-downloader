@@ -95,8 +95,10 @@ def extract_ids(soup):
 def extract_titles(soup):
     """Find the titles from divs with class 'css-1mkvlph'."""
     video_titles = []
+    num = 1
     for row in soup.find_all('div', attrs={'class': VIDEO_TITLES_DIV_CLASS_NAME }):
-        video_titles.append(row.get_text())
+        video_titles.append(str(num) + ". " + row.get_text())
+        num = num + 1
     return video_titles
 
 

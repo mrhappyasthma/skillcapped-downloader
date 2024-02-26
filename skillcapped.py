@@ -14,7 +14,7 @@ VIDEO_TITLES_DIV_CLASS_NAME = 'css-1mkvlph'
 VIDEO_IDS_DIV_ID_PREFIX = 'BrVidRow-'
 
 
-def get_video(video_id, video_title):
+def get_video(video_id, video_title, folder_name):
     """Downloads each .ts file part for the given video ID and then concatenates them all in to a final video
     file with the provided `video_title`.
     """
@@ -42,6 +42,7 @@ def get_video(video_id, video_title):
             os.system("cat " + files + " > " + output_file_name)
             os.system("rm " + files)
             print("Temporary files deleted...")
+            os.system("mv " + output_file_name + ' "' + folder_name + '\\' + video_title + '.ts"')
             print(f"Video file {output_file_name} created.", flush=True)
             break
 
@@ -102,15 +103,25 @@ def extract_titles(soup):
     return video_titles
 
 
-# Any top-level URL from the class
-url = input("Enter URL: ")
+in_file = open("inputs.txt", "r")
+lines = in_file.readlines()
 
-soup = fetch_dynamic_url(url)
-video_ids = extract_ids(soup)
-video_titles = extract_titles(soup)
+for line in lines:
+    segments = line.split(",")
+    # Any top-level URL from the class
+    url = segments[1]
+    folder_name = segments[0]
 
-print(video_ids)
-print(video_titles)
+    os.system("mkdir " + '"' + folder_name + '"')
 
-for i in range(len(video_ids)):
-    get_video(video_ids[i], video_titles[i])
+    soup = fetch_dynamic_url(url)
+    video_ids = extract_ids(soup)
+    video_titles = extract_titles(soup)
+
+    print(video_ids)
+    print(video_titles)
+
+    for i in range(len(video_ids)):
+        get_video(video_ids[i], video_titles[i], folder_name)
+
+in_file.close()

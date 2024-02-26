@@ -21,6 +21,8 @@
 
 ## TODOs / Feature Requests
 
+- Does not work for commentary videos :(
+
 - Scrape all skill capped videos from site
 
 - Extract the class name from the HTML

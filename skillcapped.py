@@ -114,14 +114,18 @@ for line in lines:
 
     os.system("mkdir " + '"' + folder_name + '"')
 
-    soup = fetch_dynamic_url(url)
-    video_ids = extract_ids(soup)
-    video_titles = extract_titles(soup)
+    if "commentaries" not in url:
+        soup = fetch_dynamic_url(url)
+        video_ids = extract_ids(soup)
+        video_titles = extract_titles(soup)
 
-    print(video_ids)
-    print(video_titles)
+        print(video_ids)
+        print(video_titles)
 
-    for i in range(len(video_ids)):
-        get_video(video_ids[i], video_titles[i], folder_name)
+        for i in range(len(video_ids)):
+            get_video(video_ids[i], video_titles[i], folder_name)
+    else:
+        video_id = url.split("/")[-1]
+        get_video(video_id, folder_name, folder_name)
 
 in_file.close()
